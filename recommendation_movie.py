@@ -1,6 +1,11 @@
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import kagglehub
+
+#Décommentez ces 2 lignes ci-dessous pour télécharger le jeu de données
+#path = kagglehub.dataset_download("grouplens/movielens-20m-dataset")
+#print("Path to dataset files:", path)
 
 movies = pd.read_csv(
     "movie.csv",
@@ -64,3 +69,4 @@ def recommendation(user, top = 5):
     top_titles = movies.set_index("movieId").loc[top_id, "title"].tolist()
     
     return top_titles
+
